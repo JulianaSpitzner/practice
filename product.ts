@@ -16,12 +16,35 @@ class Product {
     }
   }
 
-  const hamburger = new Product("Hamburger", 11);  
-  const hotdog = new Product("Hot Dog", 7);  
+  class Drink extends Product {
+    containsAlcohol: boolean;
+    public constructor(name:string, price:number, containsAlcohol:boolean) {
+        super(name, price);
+        this.containsAlcohol = containsAlcohol;
+      }
+  }
+
+  class Food extends Product {
+    type: string;
+    calories: number;
+
+    public constructor(name:string, price:number, type:string, calories:number) {
+        super(name, price);
+        this.type = type;
+        this.calories = calories;
+      }
+  }
+
+  const hamburger = new Food("Classic Hamburger", 11, "Burgers", 900);  
+  const gardenSalad = new Food("Garden Salad", 7, "Soups & Salads", 600); 
+  const lemonade = new Drink("Lemonade", 7, false); 
+  const beer = new Drink("Beer", 7, true); 
 
   const products: Product[] = [];
   products.push(hamburger);
-  products.push(hotdog);
+  products.push(gardenSalad);
+  products.push(lemonade);
+  products.push(beer);
 
   
   console.log(products.toString()); // person.name isn't accessible from outside the class since it's private
